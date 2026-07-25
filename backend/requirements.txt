@@ -1,0 +1,19 @@
+# --- web framework ---
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9          # multipart uploads for /voice/transcribe
+
+# --- config & validation ---
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+python-dotenv>=1.0.1
+
+# --- AI ---
+groq>=0.11.0
+
+# --- voice ---
+SpeechRecognition>=3.11.0        # server-side STT fallback
+
+# --- tools ---
+ddgs>=6.0.0                      # web_search
+psutil>=5.9.0                    # system_info

@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ultron-bg text-ultron-text font-sans antialiased;
+    margin: 0;
+  }
+
+  /* A visible, consistent focus ring everywhere keyboard users land. */
+  :focus-visible {
+    outline: 2px solid theme('colors.ultron.accent');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.55);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-ultron-surface/60 backdrop-blur-md border border-ultron-border rounded-xl shadow-panel;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm
+      font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-ultron-primary text-white hover:bg-ultron-bright;
+  }
+  .btn-ghost {
+    @apply btn border border-ultron-border text-ultron-text hover:border-ultron-primary/60;
+  }
+  .btn-danger {
+    @apply btn border border-ultron-danger/50 text-ultron-danger hover:bg-ultron-danger/10;
+  }
+
+  .input {
+    @apply w-full rounded-xl bg-ultron-raised border border-ultron-border px-3 py-2
+      text-sm text-ultron-text placeholder-ultron-muted
+      focus:border-ultron-primary/60 focus:outline-none;
+  }
+
+  .typing-cursor::after {
+    content: '|';
+    @apply animate-blink text-ultron-accent ml-0.5;
+  }
+}
+
+/* Anyone who has asked their OS to reduce motion gets a still interface. This
+   is a hard requirement, not a nicety — vestibular triggers are real. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
